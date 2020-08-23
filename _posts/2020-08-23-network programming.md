@@ -1,6 +1,6 @@
-#网络编程
+# 网络编程
 
-##socket API
+## socket API
 ### socket
 
 API原型：  
@@ -15,15 +15,17 @@ API原型：
 &emsp;&emsp;&emsp;&emsp;有效值：AF_INET  
 &emsp;&emsp;int type：指定socket类型  
 &emsp;&emsp;&emsp;&emsp;有效值:  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SOCK_STREAM。提供基于连接的、可靠的、有序的和双向的字节流，使用TCP传输协议  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SOCK_DGRAM。提供无连接的、不可靠的和使用固定大小缓冲区的数据报服务，使用UDP传输协议  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SOCK_STREAM。提供基于连接的、可靠的、有序的和双向的字节流，TCP  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SOCK_DGRAM。提供无连接的、不可靠的和使用固定大小缓冲区的数据报服务，UDP  
 &emsp;&emsp;int protocol：套接字所用的协议  
 &emsp;&emsp;&emsp;&emsp;有效值：  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;IPPROTO_TCP，对应TCP  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;IPPROTO_UDP，对应UDP  
 头文件：  
 &emsp;&emsp;sys/socket.h  
-###bind
+
+### bind  
+
 API 原型：  
 &emsp;&emsp;int bind(int sockfd , const struct sockaddr* my_addr, socklen_t addrlen);  
 作用：  
