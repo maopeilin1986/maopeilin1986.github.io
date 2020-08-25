@@ -509,10 +509,8 @@ API 原型：
 进程在调用fork()后，产生子进程，子进程在调用exec()执行新的程序时需要关闭已经打开的文件描述符，否则会导致文件描述符被子进程占用，如果被占用的文件描述符是socket fd，那么父进程在重新启动后，就无法正常使用这些文件描述符所绑定的端口；如果被占用的文件描述符代表普通文件，则子进程存在越权行为。  
 使用以下方式设置文件描述符的FD_CLOEXEC标识位：  
 
-<pre class='cpp'>
-    <code>
-        auto flags = fcntl(fd, F_GETFD);  
-        flags |= FD_CLOEXEC;  
-        fcntl(fd, F_SETFD, flags);  
-    </code>
-</pre>
+<pre class='cpp'><code>
+    auto flags = fcntl(fd, F_GETFD);  
+    flags |= FD_CLOEXEC;  
+    fcntl(fd, F_SETFD, flags);  
+</code></pre>
