@@ -1,7 +1,7 @@
 # 网络编程
 
-## socket API
-### socket  
+## **socket API**  
+### **socket**  
 API原型：  
 &emsp;&emsp;int socket(int af, int type, int protocol);  
 作用：  
@@ -24,7 +24,7 @@ API原型：
 &emsp;&emsp;sys/socket.h  
 
 ***
-### bind  
+### **bind**  
 API 原型：  
 &emsp;&emsp;int bind(int sockfd , const struct sockaddr* my_addr, socklen_t addrlen);  
 作用：  
@@ -64,7 +64,7 @@ API 原型：
 &emsp;&emsp;&emsp;&emsp;arpa/inet.h  
 
 ***
-### listen
+### **listen**  
 API 原型：  
 &emsp;&emsp;int listen(int sockfd, int backlog);  
 作用：  
@@ -79,7 +79,7 @@ API 原型：
 &emsp;&emsp;sys/socket.h  
 
 ***
-### connect  
+### **connect**  
 API 原型：  
 &emsp;&emsp;int connect(int sockfd, struct sockaddr* serv_addr, socklen_t addrlen);  
 作用：  
@@ -95,7 +95,7 @@ API 原型：
 &emsp;&emsp;sys/socket.h  
 
 ***
-### accept
+### **accept**  
 API 原型：  
 &emsp;&emsp;int accept(int sockfd, struct sockaddr* addr, socklen_t* addrlen);  
 作用：  
@@ -111,7 +111,7 @@ API 原型：
 &emsp;&emsp;sys/socket.h  
 
 ***
-### write
+### **write**  
 API 原型：  
 &emsp;&emsp;ssize_t write(int sockfd, const void* buf, size_t len);  
 作用：  
@@ -129,7 +129,7 @@ API 原型：
 &emsp;&emsp;unistd.h  
 
 ***
-### read
+### **read**  
 API 原型：  
 &emsp;&emsp;int read(int sockfd, void* buf, size_t len);  
 作用：  
@@ -149,7 +149,7 @@ API 原型：
 &emsp;&emsp;unistd.h  
 
 ***
-### close
+### **close**  
 API 原型：  
 &emsp;&emsp;int close(int fd);  
 作用：  
@@ -163,7 +163,7 @@ API 原型：
 &emsp;&emsp;unistd.h  
 
 ***
-### fcntl
+### **fcntl**  
 API 原型：  
 &emsp;&emsp;int fcntl(int fd, int cmd, long arg);  
 作用：  
@@ -182,7 +182,7 @@ API 原型：
 &emsp;&emsp;fcntl.h    
 
 ***
-### setsockopt
+### **setsockopt**  
 API 原型：  
 &emsp;&emsp;int setsockopt(int sockfd, int level, int optname, const void* optval, socklen_t optlen);  
 作用：  
@@ -201,42 +201,42 @@ API 原型：
 &emsp;&emsp;sys/types.h  
 
 ***  
-## TCP状态转换  
+## **TCP状态转换**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/TCP1.png">
 </div>  
 
-## IO模型  
+## **IO模型**  
 IO分为两个阶段：  
 1.	数据准备阶段  
 2.	内核空间拷贝数据到用户空间阶段  
 
-### 阻塞IO  
+### **阻塞IO**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/blocking IO.png">
 </div>
 
-### 非阻塞IO  
+### **非阻塞IO**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/nonblocking IO.png">
 </div>
 
-### IO多路复用  
+### **IO多路复用**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/IO multiplexing.png">
 </div>
 
-### 信号驱动IO  
+### **信号驱动IO**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/signal-driven IO.png">
 </div>
 
-### 异步IO  
+### **异步IO**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/async IO.png">
 </div>
 
-### 五种IO模型对比  
+### **五种IO模型对比**  
 <div align="center">
     <img src="https://maopeilin1986.github.io/assets/images/five IO model.png">
 </div>
@@ -245,38 +245,38 @@ IO分为两个阶段：
 同步IO和异步IO的区别在于第二阶段是否会被阻塞  
 阻塞IO模型、非阻塞IO模型、IO复用模型、信号驱动IO模型都属于同步IO  
 
-### 阻塞与同步  
+### **阻塞与同步**  
 阻塞可以是实现同步的一种手段，同步是两个对象之间的关系，而阻塞是一个对象的状态。  
 
 
-### 四种组合方式   
-#### 同步阻塞方式   
+### **四种组合方式**   
+#### **同步阻塞方式**   
 发送方发送请求之后一直等待响应。  
 接收方处理请求时进行的IO操作如果不能马上等到返回结果，就一直等到返回结果后，才响应发送方，期间不能进行其他工作。  
-#### 同步非阻塞方式  
+#### **同步非阻塞方式**  
 发送方发送请求之后，一直等待响应。  
 接受方处理请求时进行的IO操作如果不能马上得到结果，就立即返回，去做其他事情。  
 但是由于没有得到请求处理结果，不响应发送方，发送方一直等待。  
 当IO操作完成以后，将完成状态和结果通知接收方，接收方再响应发送方，发送方才进入下一次请求过程。（实际不应用）  
-#### 异步阻塞方式  
+#### **异步阻塞方式**  
 发送方向接收方请求后，不等待响应，可以继续其他工作。  
 接收方处理请求时进行IO操作如果不能马上得到结果，就一直等到返回结果后，才响应发送方，期间不能进行其他操作。（实际不应用）  
-#### 异步非阻塞方式  
+#### **异步非阻塞方式**  
 发送方向接收方请求后，不等待响应，可以继续其他工作。  
 接收方处理请求时进行IO操作如果不能马上得到结果，也不等待，而是马上返回去做其他事情。  
 当IO操作完成以后，将完成状态和结果通知接收方，接收方再响应发送方。（效率最高）  
-### 扩展  
-#### 同步调用与异步调用  
+### **扩展**  
+#### **同步调用与异步调用**  
 同步调用就是调用一但返回，就能知道结果，而异步是返回时不一定知道结果，还得通过其他机制来获知结果，如：a. 状态 b. 通知 c. 回调函数  
-#### 同步线程与异步线程  
+#### **同步线程与异步线程**  
 同步线程：即两个线程步调要一致，其中一个线程可能要阻塞等待另外一个线程的运行，要相互协商。快的阻塞一下等到慢的步调一致。  
 异步线程：步调不用一致，各自按各自的步调运行，不受另一个线程的影响。  
-#### 同步通信与异步通信   
+#### **同步通信与异步通信**   
 同步通信是指：发送方和接收方通过一定机制，实现收发步调协调。如：发送方发出数据后，等接收方发回响应以后才发下一个数据包的通讯方式。  
 异步通信是指：发送方的发送不管接收方的接收状态。如：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。  
-## IO多路复用API  
-###	select  
-#### FD_ZERO  
+## **IO多路复用API**  
+###	**select**  
+#### **FD_ZERO**  
 API 原型：  
 &emsp;&emsp;void FD_ZERO (fd_set* fdset);  
 作用：  
@@ -289,7 +289,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### FD_SET  
+#### **FD_SET**  
 API 原型：  
 &emsp;&emsp;void FD_SET (int fd, fd_set* fdset);  
 作用：  
@@ -303,7 +303,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### FD_CLR
+#### **FD_CLR**  
 API 原型：  
 &emsp;&emsp;void FD_CLR (int fd, fd_set* fdset);  
 作用：  
@@ -317,7 +317,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### FD_ISSET
+#### **FD_ISSET**  
 API 原型：   
 &emsp;&emsp;int FD_ISSET (int fd, fd_set* fdset);   
 作用：   
@@ -332,7 +332,7 @@ API 原型：
 &emsp;&emsp;sys/select.h   
 
 ***
-#### select
+#### **select**  
 API 原型：  
 &emsp;&emsp;int select (int maxfd, fd_set* readset, fd_set* writeset, fd_set* exceptset, const timeval* timeout);  
 作用：  
@@ -356,7 +356,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-### poll  
+### **poll**  
 API 原型：  
 &emsp;&emsp;int poll ( struct pollfd* fds, unsigned int nfds, int timeout);  
 作用：  
@@ -381,8 +381,8 @@ API 原型：
 &emsp;&emsp;}  
 
 ***
-### epoll  
-#### epoll_create  
+### **epoll**  
+#### **epoll_create**  
 API 原型：  
 &emsp;&emsp;int epoll_create(int size);  
 作用：  
@@ -398,7 +398,7 @@ API 原型：
 &emsp;&emsp;sys/epoll.h    
 
 ***
-#### epoll_ctl  
+#### **epoll_ctl**  
 API 原型：  
 &emsp;&emsp;int epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);  
 作用：  
@@ -429,7 +429,7 @@ API 原型：
 &emsp;&emsp;} epoll_data_t;  
 
 ***
-#### epoll_wait  
+#### **epoll_wait**  
 API 原型：  
 &emsp;&emsp;int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);  
 作用：  
@@ -455,32 +455,35 @@ API 原型：
 &emsp;&emsp;epoll有两种工作模式：LT模式（Level Trigger水平触发）和ET模式（Edge Trigger边缘触发）。默认情况下，epoll采用 LT模式工作，这时可以处理阻塞和非阻塞套接字，ET模式的效率要比 LT模式高，它只支持非阻塞套接字。ET模式仅当状态发生变化的时候才获得通知,这里所谓的状态的变化并不包括缓冲区中还有未处理的数据,也就是说,如果要采用ET模式,需要一直read/write直到出错为止。而LT模式是只要有数据没有处理就会一直通知下去。  
 
 ***
-## 文件描述符的非阻塞模式
+## **文件描述符的非阻塞模式**  
 
-### connect
+### **connect**  
 涉及fd：  
 &emsp;&emsp;客户端套接字文件描述符client_socket_fd。  
 阻塞模式：  
 &emsp;&emsp;客户端调用connect()会触发TCP的三次握手过程，仅在连接建立成功或出错时才返回。  
 非阻塞模式：  
 &emsp;&emsp;客户端调用connect()，如果返回0，则连接建立成功；如果返回-1，则检查errno，如果值为EINPROGRESS，则连接正在建立。为了控制连接的建立时间，将该socket   fd加入到epoll的监控事件集合中，如果超时时间内连接成功建立，则该socket fd变为可写，否则该socket fd变为既可读又可写，此时调用getsockopt()，当errno等于0时表示只可写。  
+
 ***
-### listen  
+### **listen**  
 涉及fd：  
 &emsp;&emsp;服务端套接字文件描述符(监听套接字文件描述符)listen_socket_fd。  
 阻塞模式或非阻塞模式对于listen()调用是没有区别的，因为listen调用仅仅做两件事：  
 &emsp;&emsp;当调用socket()创建一个套接字时，默认创建一个主动套接字，即它是一个将调用connect()发起连接的客户端套接字。listen()调用把一个未连接的套接字转换为一个被动套接字，指示内核应该接受指向该套接字的连接请求。根据TCP状态转换图，调用listen()将导致套接字从CLOSED状态转换为LISTEN状态；  
 &emsp;&emsp;使用第二个参数设置套接字队列的最大长度。  
+
 ***
-### accept  
+### **accept**  
 涉及fd：  
 &emsp;&emsp;服务端套接字文件描述符(监听套接字文件描述符)listen_socket_fd。  
 阻塞模式：  
 &emsp;&emsp;客户端发起连接，完成三次握手之后，在服务端还没有调用accept()之前，客户端就调用close()关闭连接，此时客户端发送的是RST报文而不是FIN报文，所以该连接在内核中就被断开了，但是此时用户层并不知道，如果此时服务端经过epoll_wait()后，调用accept()，由于连接已经断开，因此accept()调用会一直阻塞。  
 非阻塞模式：  
 &emsp;&emsp;如果有连接存在，则accept()正常返回；如果没有连接存在，或者连接被断开了，则accept()返回不同的错误码，此时属于正常情况，不用处理。  
+
 ***
-### epoll_wait  
+### **epoll_wait**  
 涉及fd：  
 &emsp;&emsp;客户端套接字文件描述符client_socket_fd；  
 &emsp;&emsp;服务端套接字文件描述符(监听套接字文件描述符)listen_socket_fd；  
@@ -489,8 +492,9 @@ API 原型：
 &emsp;&emsp;只支持EPOLLLT模式。  
 非阻塞模式：  
 &emsp;&emsp;支持EPOLLET和EPOLLLT模式。  
+
 ***
-### read  
+### **read**  
 涉及fd：  
 &emsp;&emsp;连接文件描述符connection_fd。  
 阻塞模式：  
@@ -505,7 +509,7 @@ API 原型：
 | 数据足够（不小于期望值） | 读取期望读取的字节数，返回实际读取的字节数  | 读取期望读取的字节数，返回实际读取的字节数 |  
 
 ***
-### write  
+### **write**  
 涉及fd：  
 &emsp;&emsp;连接文件描述符connection_fd。  
 阻塞模式：  
@@ -520,16 +524,15 @@ API 原型：
 | 空间足够 | 拷贝所有数据到发送缓冲区，然后返回实际拷贝的字节数 | 拷贝所有数据到发送缓冲区，然后返回实际拷贝的字节数 |  
 
 ***
-## REUSEADDR  
+## **REUSEADDR**  
 一般来说，一个端口释放后会等待一段时间之后才能被再次使用，SO_REUSEADDR是让端口释放后立即就可以被再次使用。  
 对于处于TIME_WAIT状态的TCP套接字，SO_REUSEADDR可以允许其重复绑定使用。  
 如果一个进程创建了套接字，并绑定了一个端口，接收了若干连接，然后杀死该进程，由于没有调用close()关闭套接字，因此需要等待一段时间后才能重新使用这个端口。重新启动后，只有在bind()前指定了SO_REUSEADDR才能成功绑定相同的端口。  
 
 ***
-## CLOSEONEXEC  
+## **CLOSEONEXEC**  
 进程在调用fork()后，产生子进程，子进程在调用exec()执行新的程序时需要关闭已经打开的文件描述符，否则会导致文件描述符被子进程占用，如果被占用的文件描述符是socket fd，那么父进程在重新启动后，就无法正常使用这些文件描述符所绑定的端口；如果被占用的文件描述符代表普通文件，则子进程存在越权行为。  
 使用以下方式设置文件描述符的FD_CLOEXEC标识位：  
-
 <pre class='cpp'><code>
     auto flags = fcntl(fd, F_GETFD);  
     flags |= FD_CLOEXEC;  
