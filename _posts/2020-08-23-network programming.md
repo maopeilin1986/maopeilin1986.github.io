@@ -276,7 +276,7 @@ IO分为两个阶段：
 异步通信是指：发送方的发送不管接收方的接收状态。如：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。  
 ## **IO多路复用API**  
 ###	**select**  
-#### **FD_ZERO**  
+#### <b>FD_ZERO</b>  
 API 原型：  
 &emsp;&emsp;void FD_ZERO (fd_set* fdset);  
 作用：  
@@ -289,7 +289,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### **FD_SET**  
+#### <b>FD_SET</b>  
 API 原型：  
 &emsp;&emsp;void FD_SET (int fd, fd_set* fdset);  
 作用：  
@@ -303,7 +303,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### **FD_CLR**  
+#### <b>FD_CLR</b>  
 API 原型：  
 &emsp;&emsp;void FD_CLR (int fd, fd_set* fdset);  
 作用：  
@@ -317,7 +317,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-#### **FD_ISSET**  
+#### <b>FD_ISSET</b>  
 API 原型：   
 &emsp;&emsp;int FD_ISSET (int fd, fd_set* fdset);   
 作用：   
@@ -332,7 +332,7 @@ API 原型：
 &emsp;&emsp;sys/select.h   
 
 ***
-#### **select**  
+#### <b>select</b>  
 API 原型：  
 &emsp;&emsp;int select (int maxfd, fd_set* readset, fd_set* writeset, fd_set* exceptset, const timeval* timeout);  
 作用：  
@@ -356,7 +356,7 @@ API 原型：
 &emsp;&emsp;sys/select.h  
 
 ***
-### **poll**  
+### <b>poll</b>  
 API 原型：  
 &emsp;&emsp;int poll ( struct pollfd* fds, unsigned int nfds, int timeout);  
 作用：  
@@ -382,7 +382,7 @@ API 原型：
 
 ***
 ### **epoll**  
-#### **epoll_create**  
+#### <b>epoll_create</b>  
 API 原型：  
 &emsp;&emsp;int epoll_create(int size);  
 作用：  
@@ -398,7 +398,7 @@ API 原型：
 &emsp;&emsp;sys/epoll.h    
 
 ***
-#### **epoll_ctl**  
+#### <b>epoll_ctl</b>  
 API 原型：  
 &emsp;&emsp;int epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);  
 作用：  
@@ -429,7 +429,7 @@ API 原型：
 &emsp;&emsp;} epoll_data_t;  
 
 ***
-#### **epoll_wait**  
+#### <b>epoll_wait</b>  
 API 原型：  
 &emsp;&emsp;int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);  
 作用：  
@@ -532,7 +532,8 @@ API 原型：
 ***
 ## **CLOSEONEXEC**  
 进程在调用fork()后，产生子进程，子进程在调用exec()执行新的程序时需要关闭已经打开的文件描述符，否则会导致文件描述符被子进程占用，如果被占用的文件描述符是socket fd，那么父进程在重新启动后，就无法正常使用这些文件描述符所绑定的端口；如果被占用的文件描述符代表普通文件，则子进程存在越权行为。  
-使用以下方式设置文件描述符的FD_CLOEXEC标识位：  
+使用以下方式设置文件描述符的FD_CLOEXEC标识位：
+
 <pre class='cpp'><code>
     auto flags = fcntl(fd, F_GETFD);  
     flags |= FD_CLOEXEC;  
