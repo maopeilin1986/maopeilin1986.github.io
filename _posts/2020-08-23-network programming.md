@@ -200,8 +200,11 @@ API 原型：
 &emsp;&emsp;sys/socket.h  
 &emsp;&emsp;sys/types.h  
 
-***	
+***  
 ## TCP状态转换  
+<div style="text-align: center;">
+![TCP STATE MACHINE1](../assets/images/TCP1.png)  
+</div>
 
 ## IO模型  
 IO分为两个阶段：  
@@ -209,17 +212,29 @@ IO分为两个阶段：
 2.	内核空间拷贝数据到用户空间阶段  
 
 ### 阻塞IO  
-
+<div style="text-align: center;">
+![blocking IO](../assets/images/blocking IO.png)  
+</div>
 ### 非阻塞IO  
-
+<div style="text-align: center;">
+![nonblocking IO](../assets/images/nonblocking IO.png)  
+</div>
 ### IO多路复用  
-
+<div style="text-align: center;">
+![IO multiplexing](../assets/images/IO multiplexing.png)  
+</div>
 ### 信号驱动IO  
-
+<div style="text-align: center;">
+![signal-driven IO](../assets/images/signal-driven IO.png)  
+</div>
 ### 异步IO  
-
+<div style="text-align: center;">
+![async IO](../assets/images/async IO.png)  
+</div>
 ### 五种IO模型对比  
-
+<div style="text-align: center;">
+![five IO model](../assets/images/five IO model.png)  
+</div>  
 阻塞IO和非阻塞IO的区别在于第一阶段发起IO请求是否会被阻塞  
 同步IO和异步IO的区别在于第二阶段是否会被阻塞  
 阻塞IO模型、非阻塞IO模型、IO复用模型、信号驱动IO模型都属于同步IO  
@@ -361,7 +376,7 @@ API 原型：
 
 ***
 ### epoll  
-####epoll_create  
+#### epoll_create  
 API 原型：  
 &emsp;&emsp;int epoll_create(int size);  
 作用：  
