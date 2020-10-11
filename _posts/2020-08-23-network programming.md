@@ -203,7 +203,7 @@ API 原型：
 ***  
 ## **TCP状态转换**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/TCP1.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/TCP1.png">
 </div>  
 
 ## **IO模型**  
@@ -213,32 +213,32 @@ IO分为两个阶段：
 
 ### **阻塞IO**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/blocking IO.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/blocking IO.png">
 </div>
 
 ### **非阻塞IO**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/nonblocking IO.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/nonblocking IO.png">
 </div>
 
 ### **IO多路复用**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/IO multiplexing.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/IO multiplexing.png">
 </div>
 
 ### **信号驱动IO**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/signal-driven IO.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/signal-driven IO.png">
 </div>
 
 ### **异步IO**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/async IO.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/async IO.png">
 </div>
 
 ### **五种IO模型对比**  
 <div align="center">
-    <img src="https://maopeilin1986.github.io/assets/images/five IO model.png">
+    <img src="https://maopeilin1986.github.io/assets/images/20200823/five IO model.png">
 </div>
 
 阻塞IO和非阻塞IO的区别在于第一阶段发起IO请求是否会被阻塞  
